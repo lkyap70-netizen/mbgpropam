@@ -59,6 +59,62 @@ button{background:var(--navy);border-color:var(--navy);border-radius:6px}button.
 .pbar{height:4px;border-radius:4px;background:var(--bd);margin-top:16px;overflow:hidden;display:none}.ok .pbar{display:block}.pbar i{display:block;height:100%;background:var(--gr);width:0;animation:pb 2s linear forwards}
 @keyframes dr{to{stroke-dashoffset:0}}@keyframes sp{to{transform:rotate(360deg)}}@keyframes pop{50%{transform:scale(1.15)}}
 @keyframes ovIn{from{opacity:0}}@keyframes bxIn{from{opacity:0;transform:scale(.8)}}@keyframes pb{to{width:100%}}
+
+/* ===== Dashboard v2 ===== */
+.hero.hero2{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:26px 28px;border-radius:14px;border-bottom:3px solid var(--gold);background:linear-gradient(120deg,#0b1f6b,#1e40af 45%,#0b1f6b);background-size:220% 220%;animation:gm 14s ease infinite;box-shadow:0 10px 30px #0b1f6b33}
+.hero2 .hl{position:relative;z-index:2;min-width:0}
+.hero2 h1{font-size:24px;line-height:1.25;margin:8px 0 6px}
+.hero2 .mot{background:linear-gradient(90deg,var(--gold),#fff,var(--gold));background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 4s linear infinite}
+.hrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:14px}
+.greet,.clk{font-size:12px;padding:5px 12px;border-radius:99px;background:#ffffff1f;border:1px solid #ffffff33;backdrop-filter:blur(4px)}
+.clk{font-variant-numeric:tabular-nums;font-weight:600}.clk::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:#4ade80;margin-right:7px;animation:pl 1.6s ease-in-out infinite}
+.orb{position:absolute;border-radius:50%;filter:blur(40px);opacity:.45;z-index:1;pointer-events:none}
+.o1{width:190px;height:190px;background:#f5b700;right:-40px;top:-70px;animation:fl 9s ease-in-out infinite}
+.o2{width:150px;height:150px;background:#38bdf8;left:35%;bottom:-90px;animation:fl 11s ease-in-out infinite reverse}
+.o3{width:110px;height:110px;background:#16a34a;left:-30px;top:20px;animation:fl 13s ease-in-out infinite}
+.gauge{position:relative;z-index:2;width:136px;flex:none;text-align:center}
+.gauge svg{width:136px;height:136px;transform:rotate(-90deg);filter:drop-shadow(0 0 10px #f5b70066)}
+.gauge circle{fill:none;stroke-width:9;stroke-linecap:round}.gbg{stroke:#ffffff26}
+.gfg{stroke:url(#gg);stroke-dasharray:327;stroke-dashoffset:327;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)}
+.gauge .gv{position:absolute;left:0;right:0;top:40px;font-size:28px;font-weight:800;line-height:1}
+.gauge .gv small{display:block;font-size:10px;font-weight:600;opacity:.8;margin-top:4px;letter-spacing:.3px}
+.tdy{display:flex;align-items:center;gap:12px;padding:12px 16px;border-radius:12px;margin-bottom:14px;border:1px solid var(--bd);background:var(--pn);border-left:5px solid #f59e0b}
+.tdy .ti{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;flex:none;background:#f59e0b22;color:#d97706}.tdy .ti .ic{width:20px;height:20px}
+.tdy.ok{border-left-color:#16a34a}.tdy.ok .ti{background:#16a34a22;color:#16a34a}
+.tdy.warn .ti{animation:pl 1.8s ease-in-out infinite}
+.tdy b{display:block}.tdy span.t{color:var(--mu);font-size:12px}.tdy button{margin-left:auto}
+.cards .card2{position:relative;overflow:hidden;background:var(--pn);border:1px solid var(--bd);border-radius:14px;padding:16px;transition:transform .25s,box-shadow .25s}
+.card2:hover{transform:translateY(-5px);box-shadow:0 14px 28px #0b1f6b22}
+.card2::after{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:var(--cc);transform:scaleX(0);transform-origin:left;transition:transform .5s}.card2:hover::after{transform:scaleX(1)}
+.card2 .bd{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--cc);color:#fff;margin-bottom:12px;box-shadow:0 6px 14px -4px var(--cc);transition:transform .3s}.card2:hover .bd{transform:rotate(-8deg) scale(1.1)}
+.card2 .bd .ic{width:22px;height:22px}
+.card2 b{display:block;font-size:30px;line-height:1;font-variant-numeric:tabular-nums}.card2 span{display:block;color:var(--mu);font-size:12px;margin-top:6px}.card2 small{color:var(--mu);font-size:11px;opacity:.8}
+.bars.bars2{height:170px;gap:8px;padding-top:18px;justify-content:space-around}.bars2 .bc{flex:1 1 0}
+.bars2 .bc{max-width:54px}.bars2 .tr{display:block;position:relative;flex:1;width:100%;margin-bottom:4px;border-bottom:1px solid var(--bd)}.bars2 em{position:absolute;left:0;right:0;bottom:var(--h);margin-bottom:3px;font-style:normal;font-weight:700;font-size:10px;color:var(--tx);opacity:0;animation:fi .4s calc(var(--d) + .6s) forwards}
+.bars2 i{position:absolute;left:0;right:0;bottom:0;height:0;border-radius:6px 6px 0 0;background:linear-gradient(#60a5fa,#1d4ed8);animation:grow .9s var(--d) cubic-bezier(.2,.9,.3,1.1) forwards;transition:filter .2s,transform .2s;transform-origin:bottom}
+.bars2 .bc:hover i{filter:brightness(1.2);transform:scaleX(1.12)}
+.bars2 .cg i{background:linear-gradient(#4ade80,#15803d)}.bars2 .cy i{background:linear-gradient(#fcd34d,#d97706)}.bars2 .cr i{background:linear-gradient(#fca5a5,#b91c1c)}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tile{display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;padding:14px;border-radius:12px;background:var(--in);color:var(--tx);border:1px solid var(--bd);transition:transform .25s,box-shadow .25s,border-color .25s}
+.tile:hover{transform:translateY(-4px);border-color:var(--ac);box-shadow:0 10px 22px #1d4ed824}
+.tile .ic{width:26px;height:26px;margin:0;color:var(--ac);transition:transform .3s}.tile:hover .ic{transform:scale(1.2) rotate(-6deg)}
+.tile.pri{background:linear-gradient(135deg,#0b1f6b,#1d4ed8);color:#fff;border-color:transparent}.tile.pri .ic{color:var(--gold)}
+.tile small{display:block;font-weight:400;font-size:11px;opacity:.7}
+.pbw{display:flex;align-items:center;gap:8px;min-width:120px}.pb{flex:1;height:7px;border-radius:9px;background:var(--bd);overflow:hidden}
+.pb i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,#4ade80,#15803d);animation:gw 1s var(--d) cubic-bezier(.2,.8,.2,1) forwards}
+.pb.cy i{background:linear-gradient(90deg,#fcd34d,#d97706)}.pb.cr i{background:linear-gradient(90deg,#fca5a5,#b91c1c)}
+#recent tr.rw{animation:rin .5s var(--d) both}
+.play .anim{animation:fu .6s var(--d,0s) cubic-bezier(.2,.8,.2,1) both}
+.play .hero2{animation:fu .6s both,gm 14s ease infinite}
+@keyframes gm{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
+@keyframes sh{to{background-position:-200% 0}}
+@keyframes fl{0%,100%{transform:translate(0,0)}50%{transform:translate(-25px,22px)}}
+@keyframes pl{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(1.25)}}
+@keyframes fu{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes rin{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+@keyframes grow{to{height:var(--h)}}@keyframes fi{to{opacity:1}}@keyframes gw{to{width:var(--w)}}
+@media (max-width:820px){.hero.hero2{flex-direction:column;align-items:flex-start;padding:20px}.hero2 h1{font-size:19px}.gauge{align-self:center}}
+@media (prefers-reduced-motion:reduce){.hero2,.hero2 *,.card2,.card2 *,.bars2 *,.pb i,#recent tr,.tdy *,.play .anim{animation:none!important;transition:none!important}.bars2 i{height:var(--h)}.bars2 em{opacity:1}.pb i{width:var(--w)}}
 </style></head><body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
 <symbol id="i-dash" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></symbol>
@@ -78,10 +134,16 @@ button{background:var(--navy);border-color:var(--navy);border-radius:6px}button.
 <a data-v="dash"><svg class="ic"><use href="#i-dash"/></svg>Dashboard</a><a data-v="buat"><svg class="ic"><use href="#i-doc"/></svg>Buat Laporan MBG</a><a data-v="arsip"><svg class="ic"><use href="#i-arc"/></svg>Arsip Laporan</a><a data-v="rekap"><svg class="ic"><use href="#i-cal"/></svg>Rekap Bulanan</a><a data-v="dok"><svg class="ic"><use href="#i-fol"/></svg>Arsip Dokumen</a><a data-v="master"><svg class="ic"><use href="#i-usr"/></svg>Data Master</a><a data-v="set"><svg class="ic"><use href="#i-cld"/></svg>Pengaturan Drive</a>
 <div class="dev">Pengembang<br><a href="https://masluki.id" target="_blank" rel="noopener">masluki.id</a></div><div class="chip" id="chip">Mode lokal, belum terhubung ke Drive</div></nav>
 <main class="main">
-<section class="view" id="v_dash"><div class="hero"><div class="mot">PROFESIONAL &nbsp;·&nbsp; DISIPLIN &nbsp;·&nbsp; AKURAT &nbsp;·&nbsp; BERETIKA</div><h1>Pengawasan Program Makan Bergizi Gratis Polri</h1><p>SPPG Polresta Tuban 2 Jatirogo &nbsp;·&nbsp; Yayasan Kemala Bhayangkari</p><span class="hd" id="hd"></span></div><div class="cards" id="st"></div>
-<div class="row"><div class="box"><h3>Kesesuaian 10 laporan terakhir</h3><div class="bars" id="bars"></div></div>
-<div class="box"><h3>Menu cepat</h3><div class="q"><button data-go="new"><svg class="ic"><use href="#i-plu"/></svg>Laporan Baru</button><button class="s" data-go="arsip">Arsip laporan</button><button class="s" data-go="rekap">Rekap bulan ini</button><button class="s" data-go="dok">Unggah dokumen</button></div></div></div>
-<div class="box"><h3>Laporan terbaru</h3><div class="sc"><table class="tb" id="recent"></table></div></div></section>
+<section class="view play" id="v_dash"><div class="hero hero2"><div class="orb o1"></div><div class="orb o2"></div><div class="orb o3"></div>
+<div class="hl"><div class="mot">PROFESIONAL &nbsp;·&nbsp; DISIPLIN &nbsp;·&nbsp; AKURAT &nbsp;·&nbsp; BERETIKA</div><h1>Pengawasan Program Makan Bergizi Gratis Polri</h1><p>SPPG Polresta Tuban 2 Jatirogo &nbsp;·&nbsp; Yayasan Kemala Bhayangkari</p>
+<div class="hrow"><span class="greet" id="greet"></span><span class="clk" id="clk"></span></div></div>
+<div class="gauge"><svg viewBox="0 0 120 120"><defs><linearGradient id="gg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f5b700"/><stop offset="1" stop-color="#4ade80"/></linearGradient></defs><circle class="gbg" cx="60" cy="60" r="52"/><circle class="gfg" id="gfg" cx="60" cy="60" r="52"/></svg><div class="gv"><span id="gnum" data-n="0" data-s="%">0%</span><small>Kesesuaian bulan ini</small></div></div></div>
+<div id="tdy"></div>
+<div class="cards" id="st"></div>
+<div class="row"><div class="box anim" style="--d:.35s"><h3>Kesesuaian 10 laporan terakhir</h3><div class="bars bars2" id="bars"></div></div>
+<div class="box anim" style="--d:.45s"><h3>Menu cepat</h3><div class="tiles"><button class="tile pri" data-go="new"><svg class="ic"><use href="#i-plu"/></svg>Laporan Baru<small>Mulai pengawasan</small></button><button class="tile" data-go="arsip"><svg class="ic"><use href="#i-arc"/></svg>Arsip Laporan<small>Cari &amp; buka</small></button><button class="tile" data-go="rekap"><svg class="ic"><use href="#i-cal"/></svg>Rekap Bulan Ini<small>Ringkasan</small></button><button class="tile" data-go="dok"><svg class="ic"><use href="#i-fol"/></svg>Arsip Dokumen<small>PDF &amp; unggahan</small></button></div></div></div>
+<div class="box anim" style="--d:.55s"><h3>Laporan terbaru</h3><div class="sc"><table class="tb" id="recent"></table></div></div></section>
+
 <section class="view" id="v_buat" hidden><div class="bar2"><button id="bSavePrint"><svg class="ic"><use href="#i-prt"/></svg>Cetak + Simpan ke Arsip</button><button id="bSave"><svg class="ic"><use href="#i-sav"/></svg>Simpan ke Arsip Saja</button><span class="mu" id="curInfo"></span></div><iframe id="fr" title="Form Pengawasan MBG"></iframe></section>
 <section class="view" id="v_arsip" hidden><h1>Arsip Laporan</h1><div class="f"><input id="aq" placeholder="Cari SPPG / petugas / tanggal"><input type="month" id="am"><button class="s" id="aClr">Semua</button></div><div class="box sc"><table class="tb" id="atb"></table></div></section>
 <section class="view" id="v_rekap" hidden><h1>Rekap Bulanan</h1><div class="f noprint"><input type="month" id="rkBln"><button id="rkXls">Unduh Excel</button><button class="s" onclick="window.print()">Cetak</button></div><div class="box sc"><table class="tb" id="rkTbl"></table></div></section>
@@ -152,11 +214,21 @@ function saveRep(pr){var bs=$("bSave"),bp=$("bSavePrint");if(bs.disabled)return;
 var m={id:id,tgl:d.F.tgl,sppg:d.F.sppg,pt:d.F.pNama,ok:d.ok,no:d.no,bl:d.bl,u:Date.now()};
 return kv("w","lap_"+id,d).then(function(){return gas()?rpost({a:"set",n:"lap_"+id+".json",data:JSON.stringify(d)}):0}).then(function(){IDX.laporan=mg(IDX.laporan.filter(function(x){return x.id!=id}),[m]);return push()}).then(function(){$("curInfo").textContent="Tersimpan "+tg(d.F.tgl);notif("ld","Membuat PDF...","Mohon tunggu sebentar");return archivePdf(w,d).then(function(){notif("ok","Berhasil disimpan ke Arsip",pdfName(d.F.tgl)+(gas()?" (+ Google Drive)":" (lokal)"))},function(e){notif("er","Laporan tersimpan, PDF gagal",em(e))}).then(function(){if(pr)setTimeout(function(){printRep(w)},2100)})})}).catch(function(e){notif("er","Gagal menyimpan",em(e))}).then(function(){bs.disabled=bp.disabled=false})}
 function delRep(id){if(!confirm("Hapus laporan ini dari arsip?"))return;IDX.laporan.forEach(function(x){if(x.id==id){x.del=1;x.u=Date.now()}});kv("d","lap_"+id);(gas()?rpost({a:"del",n:"lap_"+id+".json"}).catch(function(){}):Promise.resolve()).then(push).then(function(){renderArsip();toast("Laporan dihapus")})}
-function renderDash(){$("hd").textContent=tg(today(),1);var L=live(IDX.laporan).sort(function(a,b){return a.tgl<b.tgl?1:-1}),bm=today().slice(0,7),mL=L.filter(function(x){return x.tgl.slice(0,7)==bm}),avg=mL.length?Math.round(mL.reduce(function(s,x){return s+pct(x)},0)/mL.length):0;
-function c(l,v,ic,k){return '<div class="card '+k+'"><svg class="ic"><use href="#i-'+ic+'"/></svg><b>'+v+'</b><span>'+l+'</span></div>'}
-$("st").innerHTML=c("Total laporan",L.length,"clp","")+c("Laporan bulan ini",mL.length,"cal","g")+c("Rata-rata kesesuaian bulan ini",avg+"%","chk","y")+c("Arsip dokumen",live(IDX.dokumen).length,"fol","r");
-$("bars").innerHTML=L.slice(0,10).reverse().map(function(x){return '<div title="'+pct(x)+'%"><i style="height:'+pct(x)+'%"></i>'+x.tgl.slice(8,10)+'/'+x.tgl.slice(5,7)+'</div>'}).join("")||'<span class="mu">Belum ada data.</span>';
-$("recent").innerHTML="<tr><th>Tanggal</th><th>SPPG</th><th>Petugas</th><th>Kesesuaian</th><th></th></tr>"+(L.slice(0,8).map(function(x){return '<tr><td>'+tg(x.tgl)+'</td><td>'+esc(x.sppg)+'</td><td>'+esc(x.pt)+'</td><td>'+pct(x)+'%</td><td class="ac"><button class="s" data-a="open" data-id="'+x.id+'">Buka</button></td></tr>'}).join("")||"<tr><td colspan=5>Belum ada laporan. Klik Laporan baru.</td></tr>")}
+function cu(el){var n=+el.dataset.n,sf=el.dataset.s||"";if(window.matchMedia&&matchMedia("(prefers-reduced-motion:reduce)").matches){el.textContent=n+sf;return}var t0=null;function f(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1000),e=1-Math.pow(1-p,3);el.textContent=Math.round(n*e)+sf;if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+function tick(){var c=$("clk");if(c){var d=new Date();c.textContent=tg(today(),1)+" \u2022 "+d.toLocaleTimeString("id-ID",{hour:"2-digit",minute:"2-digit",second:"2-digit"}).replace(/\./g,":")}}
+setInterval(tick,1000);
+function cls(v){return v>=90?"cg":v>=70?"cy":"cr"}
+function renderDash(){var v=$("v_dash");v.classList.remove("play");void v.offsetWidth;v.classList.add("play");
+var h=new Date().getHours();$("greet").textContent="Selamat "+(h<11?"pagi":h<15?"siang":h<18?"sore":"malam")+", Petugas Propam";tick();
+var L=live(IDX.laporan).sort(function(a,b){return a.tgl<b.tgl?1:-1}),bm=today().slice(0,7),mL=L.filter(function(x){return x.tgl.slice(0,7)==bm}),avg=mL.length?Math.round(mL.reduce(function(s,x){return s+pct(x)},0)/mL.length):0,
+ bln=new Date(bm+"-01T00:00:00").toLocaleDateString("id-ID",{month:"long",year:"numeric"}),td=L.filter(function(x){return x.tgl==today()}).length;
+var g=$("gfg");g.style.transition="none";g.style.strokeDashoffset=327;void g.getBoundingClientRect();g.style.transition="";g.style.strokeDashoffset=327*(1-avg/100);$("gnum").dataset.n=avg;
+$("tdy").innerHTML=td?'<div class="tdy ok anim"><div class="ti"><svg class="ic"><use href="#i-chk"/></svg></div><div><b>Laporan hari ini sudah tersimpan</b><span class="t">'+td+' laporan tercatat pada '+tg(today())+'</span></div></div>':'<div class="tdy warn anim"><div class="ti"><svg class="ic"><use href="#i-clp"/></svg></div><div><b>Belum ada laporan hari ini</b><span class="t">Buat laporan pengawasan untuk '+tg(today())+'</span></div><button data-go="new">Buat sekarang</button></div>';
+function c(l,n,s,ic,col,sub,d){return '<div class="card2 anim" style="--cc:'+col+';--d:'+d+'s"><div class="bd"><svg class="ic"><use href="#i-'+ic+'"/></svg></div><b data-n="'+n+'" data-s="'+s+'">0'+s+'</b><span>'+l+'</span><small>'+sub+'</small></div>'}
+$("st").innerHTML=c("Total laporan",L.length,"","clp","linear-gradient(135deg,#1e40af,#3b82f6)","Seluruh arsip",.05)+c("Laporan bulan ini",mL.length,"","cal","linear-gradient(135deg,#15803d,#4ade80)",bln,.12)+c("Rata-rata kesesuaian",avg,"%","chk","linear-gradient(135deg,#d97706,#fcd34d)","Bulan ini",.19)+c("Arsip dokumen",live(IDX.dokumen).length,"","fol","linear-gradient(135deg,#c2410c,#fb923c)","PDF & unggahan",.26);
+$("bars").innerHTML=L.slice(0,10).reverse().map(function(x,i){var q=pct(x);return '<div class="bc '+cls(q)+'" title="'+tg(x.tgl)+' - '+q+'%" style="--h:'+Math.max(q,3)+'%;--d:'+(.1+i*.07)+'s"><span class="tr"><em>'+q+'%</em><i></i></span>'+x.tgl.slice(8,10)+'/'+x.tgl.slice(5,7)+'</div>'}).join("")||'<span class="mu">Belum ada data.</span>';
+$("recent").innerHTML="<tr><th>Tanggal</th><th>SPPG</th><th>Petugas</th><th>Kesesuaian</th><th></th></tr>"+(L.slice(0,8).map(function(x,i){var q=pct(x);return '<tr class="rw" style="--d:'+(.6+i*.08)+'s"><td>'+tg(x.tgl)+'</td><td>'+esc(x.sppg)+'</td><td>'+esc(x.pt)+'</td><td><div class="pbw"><div class="pb '+cls(q)+'"><i style="--w:'+q+'%;--d:'+(.7+i*.08)+'s"></i></div><b>'+q+'%</b></div></td><td class="ac"><button class="s" data-a="open" data-id="'+x.id+'">Buka</button></td></tr>'}).join("")||"<tr><td colspan=5>Belum ada laporan. Klik Laporan baru.</td></tr>");
+document.querySelectorAll("#v_dash [data-n]").forEach(cu)}
 function renderArsip(){var q=$("aq").value.toLowerCase(),m=$("am").value,L=live(IDX.laporan).filter(function(x){return(!m||x.tgl.slice(0,7)==m)&&(!q||(x.sppg+" "+x.pt+" "+x.tgl+" "+tg(x.tgl)).toLowerCase().indexOf(q)>=0)}).sort(function(a,b){return a.tgl<b.tgl?1:-1});
 $("atb").innerHTML="<tr><th>Tanggal</th><th>SPPG</th><th>Petugas</th><th>Sesuai</th><th>Tidak</th><th>%</th><th></th></tr>"+(L.map(function(x){return '<tr><td>'+tg(x.tgl)+'</td><td>'+esc(x.sppg)+'</td><td>'+esc(x.pt)+'</td><td>'+x.ok+'</td><td>'+x.no+'</td><td>'+pct(x)+'%</td><td class="ac"><button class="s" data-a="open" data-id="'+x.id+'">Buka</button><button class="s" data-a="print" data-id="'+x.id+'">Cetak</button><button class="s r" data-a="del" data-id="'+x.id+'">Hapus</button></td></tr>'}).join("")||"<tr><td colspan=7>Tidak ada laporan.</td></tr>")}
 function renderRekap(){if(!$("rkBln").value)$("rkBln").value=today().slice(0,7);var b=$("rkBln").value,L=live(IDX.laporan).filter(function(x){return x.tgl.slice(0,7)==b}).sort(function(a,b){return a.tgl<b.tgl?-1:1}),to=0,tn=0,tb=0;
