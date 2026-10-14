@@ -30,31 +30,31 @@ button.s,.fb.s{background:transparent;color:var(--ac)}
 .hint{font-size:12px;color:var(--mu);margin:6px 0 0}
 .act{display:grid;gap:8px;margin-top:4px}
 .stage{padding:12px 8px;overflow:hidden}
-.page{width:210mm;height:296mm;padding:14mm 18mm 16mm;background:#fff;color:#000;margin:0 auto 12px;box-shadow:0 2px 12px #0003;font:10pt/1.25 Arial,Helvetica,sans-serif}
-.content{height:266mm;overflow:hidden}
-.kop{text-align:center;font-size:11pt;line-height:1.35}
-.lg{height:24mm;margin-bottom:2mm}.lg img{height:24mm}
+.page{width:215.9mm;height:278.4mm;padding:19.4mm 19.05mm 10mm 31.75mm;background:#fff;color:#000;margin:0 auto 12px;box-shadow:0 2px 12px #0003;font:9pt/1.2 Arial,Helvetica,sans-serif}
+.content{height:249mm;overflow:hidden}
+.kop{text-align:center;font-size:11pt;line-height:1.35;padding-left:4mm}
+.lg{height:19.4mm;margin-bottom:2mm}.lg img{height:19.4mm}
 .ul{display:inline-block;border-bottom:.3mm solid #000;padding:0 9mm .4mm}
-h2{text-align:center;font-size:12pt;margin:6mm 0 5mm;text-decoration:underline}
-.meta{display:grid;grid-template-columns:27mm 4mm 1fr;font-size:11pt;row-gap:1.6mm;margin-bottom:4mm}
-.t{border-collapse:collapse;width:100%;table-layout:fixed}
-.t td,.t th{border:.25mm solid #000;padding:.6mm 1.6mm;vertical-align:top}
+h2{text-align:center;font-size:11pt;margin:5mm 0 4mm;padding-left:4mm;text-decoration:underline}
+.meta{display:grid;grid-template-columns:27mm 4mm 1fr;font-size:11pt;row-gap:1.6mm;margin:0 0 4mm 5.6mm}
+.t{border-collapse:collapse;width:149.9mm;margin-left:4.06mm;table-layout:fixed}
+.t td,.t th{border:.2mm solid #000;padding:.4mm 1.2mm;vertical-align:top}
 .t th{background:#d9d9d9;text-align:center}
-.t td.n{text-align:center}.t td.c{text-align:center;cursor:pointer;font-size:11pt}
+.t td.n{text-align:center}.t td.c{text-align:center;cursor:pointer;font-size:9pt}
 .t tr.sec td{background:#d9d9d9;font-weight:700}.t tr.sec td+td{text-align:center}
-.phw{text-align:center;min-height:60mm}
-.phw img{max-width:100%;max-height:176mm}
-.empty{border:.4mm dashed #999;color:#888;padding:40mm 0}
-.sig{display:grid;grid-template-columns:1fr 1fr;text-align:center;font-size:11pt;margin-top:10mm;line-height:1.35}
-.sig .tt{height:25mm;display:flex;align-items:center;justify-content:center}
-.sig .tt img{max-height:25mm;max-width:60mm}
+.phw{text-align:center;margin-top:6mm}
+.phw img{max-width:160mm;max-height:150mm}
+.empty{border:.4mm dashed #999;color:#888;padding:30mm 0}
+.sig{display:grid;grid-template-columns:1fr 1fr;text-align:center;font-size:9pt;margin-top:8mm;line-height:1.35}
+.sig .tt{height:28mm;display:flex;align-items:center;justify-content:center}
+.sig .tt img{max-height:28mm;max-width:55mm}
 @media (min-width:900px){
 .app{display:grid;grid-template-columns:340px 1fr;align-items:start}
 .panel{position:sticky;top:0;height:100vh;overflow:auto;border-right:1px solid var(--bd);border-bottom:0}
 .stage{padding:18px 12px}
 }
 @media print{
-@page{size:A4;margin:0}
+@page{size:8.5in 11in;margin:0}
 html,body{background:#fff}
 *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 .panel{display:none!important}
@@ -85,7 +85,7 @@ html,body{background:#fff}
 <details open><summary>Foto &amp; gambar</summary><div class="b" id="imgs"></div></details>
 <details><summary>Daftar periksa</summary><div class="b"><div class="row2"><button class="s" id="allOk">Semua Sesuai</button><button class="s" id="clr">Kosongkan</button></div><p class="hint" style="margin:0">Untuk satu butir, klik kolom Sesuai atau Tidak Sesuai langsung di lembar.</p></div></details>
 <div class="act"><button id="prt">Cetak / Simpan PDF</button><button class="s" id="rst">Reset semua</button>
-<p class="hint">Di dialog cetak pilih kertas A4, skala 100%, margin None/Tidak ada. Hasil cetak sama dengan tampilan lembar.</p></div>
+<p class="hint">Di dialog cetak pilih kertas Letter (8,5 × 11 in), skala 100%, margin None/Tidak ada. Hasil cetak sama dengan tampilan lembar.</p></div>
 </aside>
 <main class="stage" id="stage"><div id="pages"></div></main>
 </div>
@@ -155,21 +155,22 @@ function kop(){var L=img("logo");
 function build(){
  var P=$("pages"),cur,tb;P.style.zoom=1;P.innerHTML="";
  function np(first){var s=document.createElement("section");s.className="page";var c=document.createElement("div");c.className="content";
-  c.innerHTML=(first?kop():"")+'<table class="t"><colgroup><col style="width:11mm"><col><col style="width:21mm"><col style="width:21mm"></colgroup><thead><tr><th rowspan="2">NO</th><th rowspan="2">OBJEK PENGAWASAN</th><th colspan="2">HASIL PENGAWASAN</th></tr><tr><th>SESUAI</th><th>TIDAK<br>SESUAI</th></tr></thead><tbody></tbody></table>';
+  c.innerHTML=(first?kop():"")+'<table class="t"><colgroup><col style="width:8.87mm"><col style="width:86.95mm"><col style="width:30.53mm"><col style="width:23.53mm"></colgroup><thead><tr><th rowspan="2">NO</th><th rowspan="2">OBJEK PENGAWASAN</th><th colspan="2">HASIL PENGAWASAN</th></tr><tr><th>SESUAI</th><th>TIDAK<br>SESUAI</th></tr></thead><tbody></tbody></table>';
   s.appendChild(c);P.appendChild(s);cur=c;tb=c.querySelector("tbody")}
  np(1);
  D.forEach(function(r,i){var tr=row(r,i);tb.appendChild(tr);
   if(cur.scrollHeight>cur.clientHeight+1){tb.removeChild(tr);var mv=[];
    while(tb.lastElementChild&&tb.lastElementChild.dataset.keep)mv.unshift(tb.removeChild(tb.lastElementChild));
    np(0);mv.concat([tr]).forEach(function(x){tb.appendChild(x)})}});
- var p=img("p1"),a=img("sg1"),b=img("sg2"),s=document.createElement("section");s.className="page";
+ var p=img("p1"),a=img("sg1"),b=img("sg2");
  function ti(x){return x?'<img src="'+x+'">':""}
- s.innerHTML='<div class="content"><div class="phw">'+(p?'<img src="'+p+'">':'<div class="empty">Belum ada foto kegiatan</div>')+'</div>'
+ var blk=document.createElement("div");blk.innerHTML='<div class="phw">'+(p?'<img src="'+p+'">':'<div class="empty">Belum ada foto kegiatan</div>')+'</div>'
  +'<div class="sig"><div></div><div style="padding-right:6mm;text-align:right">'+val("kota")+', '+esc(tglId($("tgl").value,0))+'</div>'
  +'<div>PETUGAS YANG MELAKSANAKAN</div><div>Mengetahui,</div><div>&nbsp;</div><div>'+val("mJab")+'</div>'
  +'<div class="tt">'+ti(a)+'</div><div class="tt">'+ti(b)+'</div>'
- +'<div><u>'+val("pNama")+'</u><br>'+val("pPangkat")+'</div><div><u>'+val("mNama")+'</u><br>'+val("mPangkat")+'</div></div></div>';
- P.appendChild(s);$("hari").textContent=tglId($("tgl").value,1);fit()}
+ +'<div><u>'+val("pNama")+'</u><br>'+val("pPangkat")+'</div><div><u>'+val("mNama")+'</u><br>'+val("mPangkat")+'</div></div>';
+ cur.appendChild(blk);if(cur.scrollHeight>cur.clientHeight+1){cur.removeChild(blk);var s=document.createElement("section");s.className="page";var c=document.createElement("div");c.className="content";c.appendChild(blk);s.appendChild(c);P.appendChild(s)}
+ $("hari").textContent=tglId($("tgl").value,1);fit()}
 function fit(){var P=$("pages");P.style.zoom=1;var w=P.firstChild.offsetWidth,z=Math.min(1,($("stage").clientWidth-16)/w);P.style.zoom=z}
 function thumbs(){IM.forEach(function(m){var t=document.querySelector('.im[data-k="'+m[0]+'"] .th'),u=img(m[0]);t.style.backgroundImage=u?'url("'+u+'")':"none"})}
 function mkImgs(){$("imgs").innerHTML=IM.map(function(m){return '<div class="im" data-k="'+m[0]+'"><div class="th"></div><div class="ib"><b>'+m[1]+'</b><span><label class="fb s" style="color:var(--ac)">Pilih<input type="file" accept="image/*" hidden></label><button class="s">'+(DEF[m[0]]?"Bawaan":"Hapus")+'</button></span></div></div>'}).join("");
