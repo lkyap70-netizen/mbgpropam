@@ -1,7 +1,8 @@
-var KODE='jatirogo2026';
+var KODE='propam2026';
+var NAMA_FOLDER='LAPORAN PROPAM';
 var FOLDER_ID='14NzbERuRjDaHzmUKoCEk1tEEAyJJ_2K3';
 function out(o){return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON)}
-function fld(){var r=DriveApp.getFolderById(FOLDER_ID),it=r.getFoldersByName('MBG_PROPAM');return it.hasNext()?it.next():r.createFolder('MBG_PROPAM')}
+function fld(){var r=DriveApp.getFolderById(FOLDER_ID),it=r.getFoldersByName(NAMA_FOLDER);return it.hasNext()?it.next():r.createFolder(NAMA_FOLDER)}
 function fnd(f,n){var it=f.getFilesByName(n);return it.hasNext()?it.next():null}
 function doGet(e){try{if(String(e.parameter.k||'')!==KODE)return out({ok:0,err:'Kode rahasia salah'});var f=fld(),a=e.parameter.a;
 if(a=='get'){var x=fnd(f,e.parameter.n);return out({ok:1,data:x?x.getBlob().getDataAsString():null})}
