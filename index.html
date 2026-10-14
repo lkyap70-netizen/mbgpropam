@@ -89,14 +89,17 @@ var DBP=new Promise(function(res,rej){try{var r=indexedDB.open("mbgdb",1);r.onup
 function kv(m,k,v){return DBP.then(function(d){return new Promise(function(res,rej){var s=d.transaction("kv",m=="r"?"readonly":"readwrite").objectStore("kv"),q=m=="r"?s.get(k):m=="w"?s.put(v,k):s.delete(k);q.onsuccess=function(){res(q.result)};q.onerror=rej})}).catch(function(){if(m=="r")return MEM[k];if(m=="w")MEM[k]=v;else delete MEM[k]})}
 function gas(){return ls("mbg_gas")}
 function kode(){return ls("mbg_kode")}
-function rget(n){return fetch(gas()+"?a=get&k="+encodeURIComponent(kode())+"&n="+encodeURIComponent(n)).then(function(r){return r.json()}).then(function(j){if(!j.ok)throw j.err;return j.data?JSON.parse(j.data):null})}
-function rpost(o){return fetch(gas(),{method:"POST",body:JSON.stringify(Object.assign({k:kode()},o))}).then(function(r){return r.json()}).then(function(j){if(!j.ok)throw j.err;return j})}
+function em(e){return String(e&&e.message?(e.message=="Failed to fetch"?"tidak bisa menjangkau skrip, cek link /exec dan akses Siapa saja":e.message):e)}
+function jsn(r){return r.text().then(function(t){try{return JSON.parse(t)}catch(x){throw "skrip tidak mengembalikan data, kemungkinan akses belum Siapa saja atau link bukan berakhiran /exec"}})}
+function chk(j){if(!j||!j.ok)throw (j&&j.err)||("jawaban tidak dikenali ("+JSON.stringify(j).slice(0,70)+"), kemungkinan ini link skrip lain (misalnya KSPKT), bukan skrip MBG");return j}
+function rget(n){return fetch(gas()+"?a=get&k="+encodeURIComponent(kode())+"&n="+encodeURIComponent(n)).then(jsn).then(chk).then(function(j){return j.data?JSON.parse(j.data):null})}
+function rpost(o){return fetch(gas(),{method:"POST",body:JSON.stringify(Object.assign({k:kode()},o))}).then(jsn).then(chk)}
 function status(t,ok){var c=$("chip");c.textContent=t;c.dataset.s=ok?1:0}
 function toast(t){var e=$("toast");e.textContent=t;e.style.display="block";clearTimeout(toast.t);toast.t=setTimeout(function(){e.style.display="none"},2800)}
 function mg(a,b){var m={};(a||[]).concat(b||[]).forEach(function(x){if(!m[x.id]||x.u>m[x.id].u)m[x.id]=x});return Object.keys(m).map(function(k){return m[k]})}
 function live(a){return a.filter(function(x){return !x.del})}
-function pull(){if(!gas())return Promise.resolve();return rget("index.json").then(function(r){if(r){IDX.laporan=mg(IDX.laporan,r.laporan);IDX.dokumen=mg(IDX.dokumen,r.dokumen);if((r.master||{}).u>(IDX.master.u||0))IDX.master=r.master}status("Terhubung ke Google Drive",1)}).catch(function(e){status("Drive gagal: "+e,0)})}
-function push(){return kv("w","idx",IDX).then(function(){if(!gas())return;return pull().then(function(){return kv("w","idx",IDX)}).then(function(){return rpost({a:"set",n:"index.json",data:JSON.stringify(IDX)})}).catch(function(e){status("Drive gagal: "+e,0)})})}
+function pull(){if(!gas())return Promise.resolve();return rget("index.json").then(function(r){if(r){IDX.laporan=mg(IDX.laporan,r.laporan);IDX.dokumen=mg(IDX.dokumen,r.dokumen);if((r.master||{}).u>(IDX.master.u||0))IDX.master=r.master}status("Terhubung ke Google Drive",1)}).catch(function(e){status("Drive gagal: "+em(e),0)})}
+function push(){return kv("w","idx",IDX).then(function(){if(!gas())return;return pull().then(function(){return kv("w","idx",IDX)}).then(function(){return rpost({a:"set",n:"index.json",data:JSON.stringify(IDX)})}).catch(function(e){status("Drive gagal: "+em(e),0)})})}
 function pct(x){var t=x.ok+x.no+x.bl;return t?Math.round(100*x.ok/t):0}
 function tg(v,w){if(!v)return"";return new Date(v+"T00:00:00").toLocaleDateString("id-ID",w?{weekday:"long",day:"numeric",month:"long",year:"numeric"}:{day:"numeric",month:"short",year:"numeric"})}
 function today(){var d=new Date();return d.getFullYear()+"-"+("0"+(d.getMonth()+1)).slice(-2)+"-"+("0"+d.getDate()).slice(-2)}
@@ -139,7 +142,7 @@ $("dkUp").onclick=function(){var f=$("dkFile").files[0];if(!f)return alert("Pili
  (gas()?rpost({a:"upload",n:f.name,mime:f.type||"application/octet-stream",b64:r.result.split(",")[1]}).then(function(j){m.url=j.url}):kv("w","dok_"+id,r.result)).then(function(){IDX.dokumen=mg(IDX.dokumen,[m]);return push()}).then(function(){$("dkFile").value="";renderDok();toast("Dokumen diarsipkan")}).catch(function(e){toast("Gagal: "+e)})};r.readAsDataURL(f)};
 $("mSave").onclick=function(){var o={u:Date.now()};MF.forEach(function(m){o[m[0]]=$("m_"+m[0]).value});IDX.master=o;push().then(function(){toast("Data master tersimpan")})};
 $("gSave").onclick=function(){var u=$("gurl").value.trim();ls("mbg_gas",u);ls("mbg_kode",$("gkode").value.trim());if(!u){status("Mode lokal, belum terhubung ke Drive",0);return toast("Alamat dikosongkan")}
- fetch(u+"?a=ping&k="+encodeURIComponent(kode())).then(function(r){return r.json()}).then(function(j){if(!j.ok)throw j.err;return pull().then(push)}).then(function(){toast("Terhubung ke Google Drive")}).catch(function(e){status("Drive gagal: "+e,0);toast("Gagal terhubung. Cek deploy: akses Siapa saja")})};
+ fetch(u+"?a=ping&k="+encodeURIComponent(kode())).then(jsn).then(chk).then(function(){return pull().then(push)}).then(function(){toast("Terhubung ke Google Drive")}).catch(function(e){status("Drive gagal: "+em(e),0);toast("Gagal terhubung: "+em(e))})};
 $("gSync").onclick=function(){if(!gas())return toast("Isi alamat Apps Script dulu");pull().then(push).then(function(){toast("Sinkron selesai");renderDash()})};
 
 kv("r","idx").then(function(d){if(d)IDX=d;IDX.laporan=IDX.laporan||[];IDX.dokumen=IDX.dokumen||[];IDX.master=IDX.master||{};go("dash");if(gas()){status("Menyambung ke Drive...",1);pull().then(function(){return kv("w","idx",IDX)}).then(function(){go(document.querySelector(".side a.on").dataset.v=="buat"?"buat":document.querySelector(".side a.on").dataset.v)})}});
