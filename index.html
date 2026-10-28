@@ -376,7 +376,7 @@ function tick(){var c=$("clk");if(c){var d=new Date();c.textContent=tg(today(),1
 setInterval(tick,1000);
 function cls(v){return v>=90?"cg":v>=70?"cy":"cr"}
 function renderDash(){var v=$("v_dash");v.classList.remove("play");void v.offsetWidth;v.classList.add("play");
-var h=new Date().getHours();$("greet").textContent="Selamat "+(h<11?"pagi":h<15?"siang":h<18?"sore":"malam")+", Petugas Propam";tick();
+var h=new Date().getHours();$("greet").textContent="Selamat "+(h<11?"pagi":h<15?"siang":h<18?"sore":"malam")+", "+who(sesi());tick();
 var L=live(IDX.laporan).sort(function(a,b){return a.tgl<b.tgl?1:-1}),bm=today().slice(0,7),mL=L.filter(function(x){return x.tgl.slice(0,7)==bm}),avg=mL.length?Math.round(mL.reduce(function(s,x){return s+pct(x)},0)/mL.length):0,
  bln=new Date(bm+"-01T00:00:00").toLocaleDateString("id-ID",{month:"long",year:"numeric"}),td=L.filter(function(x){return x.tgl==today()}).length;
 var g=$("gfg");g.style.transition="none";g.style.strokeDashoffset=327;void g.getBoundingClientRect();g.style.transition="";g.style.strokeDashoffset=327*(1-avg/100);$("gnum").dataset.n=avg;
@@ -416,13 +416,14 @@ $("gSync").onclick=function(){if(!gas())return toast("Isi alamat Apps Script dul
 
 $("mtop").appendChild(document.querySelector(".side .brand").cloneNode(true));
 $("mtop").appendChild(document.querySelector(".side .acc").cloneNode(true));
-var NRP={"82100416":"IPTU","74030466":"","71050246":"","81030633":"","69070407":"","83070036":"","77010533":"","94090247":"","78020059":"","76101071":"","81051400":"","84100747":"","82020343":"","84061256":"","69070433":"","93080528":""};
-function sesi(){try{var s=JSON.parse(ls("mbg_auth")||"null");if(s&&NRP.hasOwnProperty(s.n)&&Date.now()-s.t<43200000)return s}catch(e){}return null}
-function accShow(){var s=sesi();document.querySelectorAll(".accT").forEach(function(e){e.textContent=s?(NRP[s.n]?NRP[s.n]+" · ":"")+"NRP ••••"+s.n.slice(-4):""})}
+var PERSONEL={"82100416":{p:"IPTU",n:"M. ARIF NUGROHO, S.H."},"74030466":{p:"IPTU",n:"JOKO SUSANTO, S.H."},"71050246":{p:"AIPTU",n:"SUGIANTO"},"81030633":{p:"AIPTU",n:"IKA ARI.P, S.H."},"69070407":{p:"AIPTU",n:"RETNO HARTAJI"},"83070036":{p:"AIPTU",n:"SUWIGNYO"},"77010533":{p:"AIPDA",n:"SUKAMTO"},"94090247":{p:"BRIG.",n:"ROFIQUL UMAM SETIANA"},"78020059":{p:"AIPTU",n:"WIRIS ARI WIJAYA"},"76101071":{p:"AIPDA",n:"KASWADI, S.H."},"81051400":{p:"AIPTU",n:"FAHRUL NUR CAHYO"},"84100747":{p:"AIPDA",n:"BAMBANG HIMAWAN"},"82020343":{p:"AIPTU",n:"PRIYONO"},"84061256":{p:"AIPDA",n:"YULISTIYONO"},"69070433":{p:"AIPTU",n:"KARSIMIN"},"93080528":{p:"BRIGPOL",n:"LAUNA SURYA GANGGA"}};
+function who(s){var o=s&&PERSONEL[s.n];return o?o.p+" "+o.n:"Petugas Propam"}
+function sesi(){try{var s=JSON.parse(ls("mbg_auth")||"null");if(s&&PERSONEL.hasOwnProperty(s.n)&&Date.now()-s.t<43200000)return s}catch(e){}return null}
+function accShow(){var s=sesi();document.querySelectorAll(".accT").forEach(function(e){e.textContent=s?who(s):""})}
 function lgMasuk(e){e.preventDefault();var p=$("lgPass").value.replace(/\D/g,""),c=$("lgForm");
  if(!p)$("lgErr").textContent="Masukkan NRP Anda";
- else if(!NRP.hasOwnProperty(p))$("lgErr").textContent="NRP tidak terdaftar, periksa kembali";
- else{ls("mbg_auth",JSON.stringify({n:p,t:Date.now()}));document.documentElement.classList.add("authed");accShow();$("lgPass").value="";return}
+ else if(!PERSONEL.hasOwnProperty(p))$("lgErr").textContent="NRP tidak terdaftar, periksa kembali";
+ else{ls("mbg_auth",JSON.stringify({n:p,t:Date.now()}));document.documentElement.classList.add("authed");accShow();renderDash();$("lgPass").value="";return}
  c.classList.remove("shake");void c.offsetWidth;c.classList.add("shake");$("lgPass").select()}
 function lgKeluar(){ls("mbg_auth","");document.documentElement.classList.remove("authed");$("lgPass").value="";$("lgErr").textContent=""}
 $("lgLogo").src=document.querySelector(".side .brand img").src;
